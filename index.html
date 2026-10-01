@@ -122,7 +122,7 @@ ol.events li.future{opacity:.42}
 <div class="wrap">
   <header>
     <h1>Pax Silica VS WAICO</h1>
-    <div class="asof" aria-live="polite"><span class="d" id="dateLabel">1 Oct 2026</span></div>
+    <div class="asof" aria-live="polite"><span class="d" id="dateLabel"></span></div>
     <p class="deck">Who has joined the US-led and the China-led AI blocs, and when.</p>
   </header>
 
@@ -231,7 +231,10 @@ const NOTES = {
 const ALIAS = {"344":"156","446":"156"}; // Hong Kong, Macao follow China
 
 const ORG = {pax:"Pax Silica", waico:"WAICO"};
-const START = new Date("2025-12-01T00:00:00Z"), END = new Date("2026-10-01T00:00:00Z");
+const START = new Date("2025-12-01T00:00:00Z");
+const NOW = new Date();
+// End the timeline at the visitor's today (never earlier than the last data update)
+const END = new Date(Math.max(Date.UTC(NOW.getFullYear(), NOW.getMonth(), NOW.getDate()), Date.parse("2026-10-01T00:00:00Z")));
 const DAY = 864e5;
 const nDays = Math.round((END-START)/DAY);
 const dayOf = s => Math.round((new Date(s+"T00:00:00Z")-START)/DAY);
